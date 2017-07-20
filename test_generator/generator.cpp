@@ -1,12 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <experimental/random>
+#include <random>
 #include <limits>
 #include <algorithm>
 
 using std::cin;
 using std::cout;
 using std::endl;
+
+int randint(int min, int max){
+    int length = max-min;
+    return std::rand()%length + min;
+}
 
 int main() {
     int count;
@@ -31,9 +36,9 @@ int main() {
         values.push_back(upper_median);
     }
     std::generate(bottom_half.begin(), bottom_half.end(),
-            [&lower_median]{return std::experimental::randint(std::numeric_limits<int>::min(), lower_median);});
+            [&lower_median]{return randint(std::numeric_limits<int>::min(), lower_median);});
     std::generate(upper_half.begin(), upper_half.end(),
-            [&upper_median]{return std::experimental::randint(upper_median, std::numeric_limits<int>::max());});
+            [&upper_median]{return randint(upper_median, std::numeric_limits<int>::max());});
 
     values.insert(values.end(), bottom_half.begin(), bottom_half.end());
     values.insert(values.end(), upper_half.begin(), upper_half.end());
