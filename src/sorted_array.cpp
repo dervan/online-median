@@ -55,6 +55,10 @@ SortedArray::SortedArray() {
     values = new int[max_size];
     copy_buffer = new int[max_size];
 }
+
+SortedArray::~SortedArray() {
+}
+
 int SortedArray::push(int value) {
     if (size==max_size) {
         increase_size(2*max_size);
@@ -71,9 +75,19 @@ float SortedArray::median(void) {
     }
 }
 
+int * SortedArray::get_values() {
+  int * return_values = new int[size];
+  std::memcpy(return_values, values, sizeof(int)*size);
+  return return_values;
+}
+
+int SortedArray::get_size() {
+  return size;
+}
+
 void SortedArray::print() {
-    for (int i = 0; i < size; i++) {
-        cout << values[i] << " ";
-    }
-    cout << endl;
+  for (int i = 0; i < size; i++) {
+    cout << values[i] << " ";
+  }
+  cout << endl;
 }
