@@ -1,3 +1,5 @@
+#ifndef HEAP_H
+#define HEAP_H
 
 template <typename Comparator>
 class Heap{
@@ -18,4 +20,6 @@ class Heap{
     int get_size();
     void push(int value);
     int pop();
+    bool empty(){return size==0;}
 };
+#endif

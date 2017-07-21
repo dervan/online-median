@@ -1,5 +1,5 @@
 #include <iostream>
-#include "sorted_array.h"
+#include "heap_median.h"
 
 using std::cin;
 using std::cout;
@@ -7,11 +7,12 @@ using std::endl;
 
 int main() {
     int x;
-    SortedArray arr;
+    HeapMedian hm;
+    
     while (cin >> x) {
-        arr.push(x);
+        hm.push(x);
     }
-    cout << arr.median() << " ";
+    cout << hm.getMedian() << " ";
     cout << "\n";
     //cout << "\nTable:\n";
     //arr.print();

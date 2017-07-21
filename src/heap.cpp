@@ -5,7 +5,7 @@
 template <typename Comparator>
 Heap<Comparator>::Heap() {
   size = 0;
-  max_size = 1024;
+  max_size = 4;
   values = new int[max_size];
 }
 
@@ -108,3 +108,6 @@ void Heap<Comparator>::fix_up(int index) {
     return fix_up(parent(index));
   }
 }
+
+template class Heap<std::greater<int> >;
+template class Heap<std::less<int> >;
