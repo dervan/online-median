@@ -9,6 +9,7 @@ class Heap{
     int left(int i);
     int right(int i);
     void fix_up(int i);
+    void fix_down(int i);
     void increase_size(int new_size);
     void swap(int a, int b);
   public:

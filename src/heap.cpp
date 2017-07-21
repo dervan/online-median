@@ -40,6 +40,36 @@ void Heap<Comparator>::push(int value){
 }
 
 template <typename Comparator>
+int Heap<Comparator>::pop(){
+  int ret = values[0];
+  values[0] = values[size-1];
+  size--;
+  fix_down(0);
+  return ret;
+}
+
+template <typename Comparator>
+int Heap<Comparator>::left(int index){
+  int left = 2*(index+1)-1;
+  if (left >= size) {
+    return -1;
+  } else {
+    return left;
+  }
+}
+
+template <typename Comparator>
+int Heap<Comparator>::right(int index){
+  int right = 2*(index+1);
+  if (right >= size) {
+    return -1;
+  } else {
+    return right;
+  }
+}
+
+
+template <typename Comparator>
 int Heap<Comparator>::parent(int index){
   return index/2;
 }
@@ -52,6 +82,23 @@ void Heap<Comparator>::swap(int a, int b) {
 }
 
 template <typename Comparator>
+void Heap<Comparator>::fix_down(int index) {
+  int largest = index;
+  if (left(index) != -1 &&
+      Comparator()(values[left(index)], values[largest])){
+    largest = left(index);
+  }
+  if (right(index) != -1 && 
+      Comparator()(values[right(index)], values[largest])){
+    largest = right(index);
+  }
+  if (index != largest) {
+    swap(largest, index);
+    fix_down(largest);
+  }
+  return;
+}
+template <typename Comparator>
 void Heap<Comparator>::fix_up(int index) {
   if (index == 0){
     return;
@@ -60,5 +107,4 @@ void Heap<Comparator>::fix_up(int index) {
     swap(parent(index), index);
     return fix_up(parent(index));
   }
-
 }
