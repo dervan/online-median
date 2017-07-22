@@ -71,7 +71,7 @@ int Heap<Comparator>::right(int index){
 
 template <typename Comparator>
 int Heap<Comparator>::parent(int index){
-  return index/2;
+  return (index+1)/2 - 1;
 }
 
 template <typename Comparator>

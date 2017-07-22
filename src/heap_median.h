@@ -6,8 +6,8 @@
 
 class HeapMedian {
   private:
-    Heap<std::less<int>> upper_heap;
-    Heap<std::greater<int>> lower_heap;
+    Heap<std::less<int> > upper_heap;
+    Heap<std::greater<int> > lower_heap;
     bool lowerIsBigger();
     bool upperIsBigger();
     void equalize();
