@@ -8,6 +8,6 @@ class ArrayMedianCalculator : public MedianCalculator, public SortedArray {
     void AddValue(int value) {
       SortedArray::AddValue(value);
     }
-    float GetMedian();
+    double GetMedian();
 };
 #endif

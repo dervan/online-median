@@ -16,7 +16,7 @@ class MagicFivesCalculator : public MedianCalculator {
   public:
     MagicFivesCalculator();
     void AddValue(int value);
-    float GetMedian();
+    double GetMedian();
 };
 
 #endif

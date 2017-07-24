@@ -113,7 +113,7 @@ int MagicFivesCalculator::FindUpperMedian(int lower_median) {
   return upper_median_guess;
 }
 
-float MagicFivesCalculator::GetMedian(){
+double MagicFivesCalculator::GetMedian(){
   int lower_median = Select(values, size, (size-1)/2);
   if (!(size % 2)) {
     int upper_median = FindUpperMedian(lower_median);

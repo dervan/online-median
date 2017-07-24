@@ -33,7 +33,7 @@ void HeapMedianCalculator::AddValue(int value) {
     Equalize();
 }
 
-float HeapMedianCalculator::GetMedian() {
+double HeapMedianCalculator::GetMedian() {
     if (UpperIsBigger()) {
         return upper_heap.GetTop();
     }
