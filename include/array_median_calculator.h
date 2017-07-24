@@ -1,5 +1,5 @@
-#ifndef SORTED_ARRAY_H
-#define SORTED_ARRAY_H
+#ifndef ARRAY_MEDIAN_CALCULATOR_H 
+#define ARRAY_MEDIAN_CALCULATOR_H
 #include "median_calculator.h"
 
 class ArrayMedianCalculator : public MedianCalculator {

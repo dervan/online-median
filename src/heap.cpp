@@ -2,22 +2,25 @@
 #include "cstring"
 #include "functional"
 
+/* Creates new heap ordered with function given as template parameter */
 template <typename Comparator>
 Heap<Comparator>::Heap() {
   size = 0;
-  max_size = 4;
+  max_size = 1024;
   values = new int[max_size];
 }
 
+/* Increases size of array with values */
 template <typename Comparator>
 void Heap<Comparator>::IncreaseSize(int new_size) {
-    int * new_values = new int[new_size];
-    std::memcpy(new_values, values, sizeof(int)*size);
-    delete[] values;
-    values = new_values;
-    max_size = new_size;
+  int * new_values = new int[new_size];
+  std::memcpy(new_values, values, sizeof(int)*size);
+  delete[] values;
+  values = new_values;
+  max_size = new_size;
 }
 
+/* Adds new value to heap */
 template <typename Comparator>
 void Heap<Comparator>::AddValue(int value){
   if(size==max_size){
@@ -28,6 +31,7 @@ void Heap<Comparator>::AddValue(int value){
   size++;
 }
 
+/* Deletes value on top of heap and restores heap properties */
 template <typename Comparator>
 int Heap<Comparator>::RemoveTop(){
   int ret = values[0];
@@ -37,6 +41,7 @@ int Heap<Comparator>::RemoveTop(){
   return ret;
 }
 
+/* Returns index of left son in heap or -1 if this son does not exist */
 template <typename Comparator>
 int Heap<Comparator>::Left(int index) const {
   int left = 2*(index+1)-1;
@@ -47,6 +52,7 @@ int Heap<Comparator>::Left(int index) const {
   }
 }
 
+/* Returns index of right son in heap or -1 if this son does not exist */
 template <typename Comparator>
 int Heap<Comparator>::Right(int index) const {
   int right = 2*(index+1);
@@ -57,12 +63,13 @@ int Heap<Comparator>::Right(int index) const {
   }
 }
 
-
+/* Returns index of parent in heap */
 template <typename Comparator>
 int Heap<Comparator>::Parent(int index) const {
   return (index+1)/2 - 1;
 }
 
+/* Swap two values in heap */
 template <typename Comparator>
 void Heap<Comparator>::Swap(int a, int b) {
   int tmp = values[a];
@@ -70,6 +77,7 @@ void Heap<Comparator>::Swap(int a, int b) {
   values[b] = tmp;
 }
 
+/* Restores heap property by moving element lower if it's needed */
 template <typename Comparator>
 void Heap<Comparator>::FixDown(int index) {
   int largest = index;
@@ -87,6 +95,8 @@ void Heap<Comparator>::FixDown(int index) {
   }
   return;
 }
+
+/* Restores heap property by moving element higher if it's needed */
 template <typename Comparator>
 void Heap<Comparator>::FixUp(int index) {
   if (index == 0){
@@ -98,5 +108,6 @@ void Heap<Comparator>::FixUp(int index) {
   }
 }
 
+/* Instances which helps to easlily integrate with other binaries */
 template class Heap<std::greater<int> >;
 template class Heap<std::less<int> >;

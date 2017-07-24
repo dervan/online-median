@@ -1,7 +1,6 @@
-#ifndef MAGIC_FIVES_H
-#define MAGIC_FIVES_H
+#ifndef MAGIC_FIVES_CALCULATOR_H
+#define MAGIC_FIVES_CALCULATOR_H
 #include "median_calculator.h"
-#include <cstring>
 
 class MagicFivesCalculator : public MedianCalculator {
   private:

@@ -1,5 +1,5 @@
-#ifndef HEAP_MEDIAN_H
-#define HEAP_MEDIAN_H
+#ifndef HEAP_MEDIAN_CALCULATOR_H
+#define HEAP_MEDIAN_CALCULATOR_H
 
 #include "median_calculator.h"
 #include "heap.h"

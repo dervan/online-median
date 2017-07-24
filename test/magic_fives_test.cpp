@@ -1,5 +1,5 @@
 // tests.cpp
-#include "magic_fives.cpp"
+#include "magic_fives_calculator.cpp"
 #include <gtest/gtest.h>
 namespace {
 
