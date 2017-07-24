@@ -30,7 +30,9 @@ int main(int argc, char * argv[]) {
   }
 
   int new_number;
-
+  //cout.precision(1);
+  //cout << std::fixed;
+  //cout << std::noshowpoint;
   /* Try to load an integer */
   cin >> new_number;
   if (print_on_every_number) {

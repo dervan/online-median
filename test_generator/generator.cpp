@@ -17,7 +17,8 @@ int main() {
     int count;
     int median;
     int spread;
-    cin >> count >> median >> spread;
+    int requests_number;
+    cin >> count >> median >> spread >> requests_number;
     std::vector<int> bottom_half((count-1)/2);
     std::vector<int> upper_half((count-1)/2);
     std::vector<int> values;
@@ -44,9 +45,23 @@ int main() {
     values.insert(values.end(), upper_half.begin(), upper_half.end());
 
     std::random_shuffle(values.begin(), values.end());
-    for (auto i : values) {
-        std::cout << i << " ";
+    
+    std::vector<long long int> random_places(requests_number);
+    if (requests_number > 0 ) {
+      random_places[0] = count-1;
+      std::generate(random_places.begin()+1, random_places.end(),
+          [&count]{return randint(0, count-1);});
+      std::sort(random_places.begin(), random_places.end());
     }
-    std::cout << "\n";
+
+    std::vector<long long int>::iterator it = random_places.begin();
+    for (int i=0; i<count; i++) {
+        std::cout << values[i] << " ";
+        if (it != random_places.end() && i >=(*it)) {
+          std::cout << "m ";
+          it++;
+        }
+    }
+    std::cout << std::endl; 
     return 0;
 }

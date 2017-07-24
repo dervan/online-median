@@ -40,5 +40,5 @@ float HeapMedianCalculator::GetMedian() {
     if (LowerIsBigger()) {
         return lower_heap.GetTop();
     }
-    return (lower_heap.GetTop() + upper_heap.GetTop()) / 2;
+    return ((long long int)lower_heap.GetTop() + upper_heap.GetTop()) / 2.0;
 }
