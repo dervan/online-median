@@ -8,6 +8,14 @@ MagicFivesCalculator::MagicFivesCalculator(){
   values = new int[max_size];
 }
 
+void MagicFivesCalculator::IncreaseSize(int new_size) {
+  int * new_values = new int[new_size];
+  std::memcpy(new_values, values, sizeof(int)*size);
+  delete values;
+  values = new_values;
+  max_size = new_size;
+}
+
 int * MagicFivesCalculator::Partition(int * input_values, int size, int pivot, int * pivotPosition){
   int * parted = new int[size];
   int left = 0;
@@ -88,6 +96,9 @@ int MagicFivesCalculator::Select(int * const input_values, int count, int positi
 }
 
 void MagicFivesCalculator::AddValue(int new_value) {
+  if (size==max_size) {
+    IncreaseSize(2*max_size);
+  }
   values[size] = new_value;
   size++;
 }
