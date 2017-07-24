@@ -111,15 +111,23 @@ int MagicFivesCalculator::Select(int * const input_values, int count, int positi
 }
 
 /* Select algorithm finds lower median. If array have even length
- * we have to find also upper median - next bigger value.  */
+ * we have to find also upper median - next bigger value or same
+ * value - depends on positions of lower_median occurences */
 int MagicFivesCalculator::FindUpperMedian(int lower_median) {
   int upper_median_guess = std::numeric_limits<int>::max();
+  int smaller_or_equal = 0;
   for (int i = 0; i < size; i++) {
-    if (values[i]>lower_median && upper_median_guess > values[i]) {
+    if (values[i]<=lower_median) {
+      smaller_or_equal++;
+    } else if (upper_median_guess > values[i]) {
       upper_median_guess = values[i];
     }
   }
-  return upper_median_guess;
+  if (smaller_or_equal > ((size-1)/2 + 1)) {
+    return lower_median;
+  } else {
+    return upper_median_guess;
+  }
 }
 
 /* It just simply selects median with Select algorithm */

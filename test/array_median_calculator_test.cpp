@@ -67,7 +67,6 @@ TEST_F(ArrayMedianCalculatorOrder, InsertBigger) {
   }
 }
 
-
 TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
 
   test_array_calculator.AddValue(0);
@@ -80,6 +79,31 @@ TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
     ASSERT_EQ(desired_values[i], values[i]);
   }
 }
+
+
+TEST(ArrayMedianCalculatorBasics, AverageOfElements) {
+  ArrayMedianCalculator median_calculator;
+  const int values[] = {1, 12, 14, 99, 14, 12, 0, 100};
+  const int desired_median= 13;
+
+  for (auto x : values) {
+      median_calculator.AddValue(x);
+  }
+  ASSERT_EQ(desired_median, median_calculator.GetMedian());
+}
+
+TEST(ArrayMedianCalculatorBasics, AverageOfSameElements) {
+  ArrayMedianCalculator median_calculator;
+  const int values[] = {1, 2, 2, 2, 0, 10, 2, 11};
+  const int desired_median = 2;
+
+  for (auto x : values) {
+    median_calculator.AddValue(x);
+  }
+  ASSERT_EQ(desired_median, median_calculator.GetMedian());
+}
+
+
 
 TEST(ArrayMedianCalculatorOverflows, NegativeIntegerOverflow) {
   ArrayMedianCalculator median_calculator;

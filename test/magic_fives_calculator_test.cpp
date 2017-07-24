@@ -41,6 +41,17 @@ TEST(MagicFivesBasic, AverageOfElements) {
   ASSERT_EQ(desired_median, median_calculator.GetMedian());
 }
 
+TEST(MagicFivesBasic, AverageOfSameElements) {
+  MagicFivesCalculator median_calculator;
+  const int values[] = {1, 2, 2, 2, 0, 10, 2, 11};
+  const int desired_median = 2;
+
+  for (auto x : values) {
+    median_calculator.AddValue(x);
+  }
+  ASSERT_EQ(desired_median, median_calculator.GetMedian());
+}
+
 TEST(MagicFivesOverflows, NegativeIntegerOverflow) {
   MagicFivesCalculator median_calculator;
   const int int_min = std::numeric_limits<int>::min();
