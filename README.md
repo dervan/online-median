@@ -22,7 +22,7 @@ Druga wersja to zwracanie mediany po wczytaniu każdej nowej liczby. Program wł
 Samo obliczanie mediany program może realizować na trzy sposoby:
 - ArrayMedianCalculator - czyli posortowana tablica do której kolejne elementy dokładane są na odpowiednie miejsca. Uruchamia się go flagą *-a*.
 - MagicFivesCalculator - czyli zwykła tablica, do której dopisujemy kolejne elementy na końcu, a kiedy dostajemy zapytanie o medianę uruchamiamy algorytm magicznych piątek (czyli tzw. medianę median). Tę wersję otrzymamy dodając flagę *-f*.
-- HeapMedianCalculator - czyli dwa kopce, przechowujące odpowiednio elementy mniejsze i większe od aktualnej mediany. To jest domyślna wersja, nie trzeba dodawać żadnej flagi, ale żeby było symetrycznie możemy dodać flagę *-h*.
+- HeapMedianCalculator - czyli dwa kopce, przechowujące odpowiednio elementy mniejsze i większe od aktualnej mediany. To jest domyślna wersja, nie trzeba dodawać żadnej flagi, ale żeby było symetrycznie możemy sobie dodawać flagę *-h*.
 
 ## Uruchamianie testów
 W już zbudowanym projekcie wystarczy w folderze **./build** wydać polecenie
@@ -42,7 +42,7 @@ Do kompletu w repozytorium załączyłem program **test_generator**, który pozw
 - *c* - liczba zapytań o medianę (tj. liczba literek m w teście). Jeśli *c*>0 to zawsze jedna litera m jest na końcu ciągu, pozostałe *c*-1 jest rozłożone losowo w ciągu wartości.
 Przykładowe użycie:
 ```
-echo "1000000000 42 17231 30" | ./test_generator >./testcase_0
+echo "100000000 42 17231 30" | ./test_generator >./testcase_0
 ```
 
 ## Analiza złożoności algorytmów
@@ -50,27 +50,27 @@ Każdy z przedstawionych algorytmów ma swoje zalety i jest dobry do pewnych zas
 
 ### ArrayMedianCalculator
 Jest to najprostsze rozwiązanie, istny brute-force. Wstawienie każdej nowej liczby może zająć nawet O(n) operacji, także jest absolutnie beznadziejny dla dużych wartości n. Niemniej jednak jest prosty w implementacji i nie zawiera nic bardziej skomplikowanego niż wyszukiwanie binarne.
-Obliczenie mediany dla posortowanej tablicy odbywa się w czasie O(1), sumaryczna złożoność dla n elementów i k zapytań wynosi:
+Obliczenie mediany dla posortowanej tablicy odbywa się w czasie *O(1)*, sumaryczna złożoność dla *n* elementów i *k* zapytań wynosi:
 
 *O(n² + k)*
 
 ### MagicFivesCalculator
-Klasyczny algorytm do obliczania mediany. Niestety dosyć trudno jest go dostosować do wykorzystwania poprzednich obliczeń, także w tym programie zaimplementowany jest w standardowy sposób. Jego plusem jest dokładanie elementów w czasie O(1) - minusem natomiast obliczanie mediany w czasie O(n). Dlatego sumaryczna złożoność:
+Klasyczny algorytm do obliczania mediany. Niestety dosyć trudno jest go dostosować do wykorzystwania poprzednich obliczeń, także w tym programie zaimplementowany jest w standardowy sposób. Jego plusem jest dokładanie elementów w czasie *O(1)* - minusem natomiast obliczanie mediany w czasie *O(n)*. Dlatego sumaryczna złożoność:
 
 *O(n + n\*k)*
 
 sprawia, że jest atrakcyjny tylko wtedy, gdy bardzo mało razy zapytujemy o medianę.
 
 ### HeapMedianCalculator
-Chyba najciekawszy z zaimplementowanych tu algorytmów. Zauważamy, że tak naprawdę nie musimy znać kolejności wszystkich liczb by umieć podawać medianę, wystarczy śledzić po której stronie aktualnej mediany dokładamy nową liczbę i ewentualnie przerzucać liczby z jednej części do drugiej gdy mediana się "przesuwa". Szczęśliwie da się to zrealizować szybko za pomocą kolejek priorytetowych. Takie właśnie rozwiązanie, oparte na kopcach binarnych jest zaimplementowane w HeapMedianCalculator. Obliczenie mediany odbywa się w czasie stałym, natomiast dodanie każdego nowego elementu może zajmuje *O(log(n))*. Ostateczna złożoność przybiera więc postać:
+Chyba najciekawszy z zaimplementowanych tu algorytmów. Korzysta z faktu, że tak naprawdę nie musimy znać kolejności wszystkich liczb by umieć podawać medianę, wystarczy śledzić po której stronie aktualnej mediany dokładamy nową liczbę i ewentualnie przerzucać liczby z jednej części do drugiej gdy mediana się "przesuwa". Szczęśliwie da się to zrealizować szybko za pomocą kolejek priorytetowych. Takie właśnie rozwiązanie, oparte na kopcach binarnych, jest zaimplementowane w HeapMedianCalculator. Obliczenie mediany odbywa się w czasie stałym, natomiast dodanie każdego nowego elementu zajmuje najwyżej dwie operacje na kopcach o rozmiarze *n/2*, każda z nich ma więc koszt *O(log(n))*. Ostateczna złożoność przybiera więc postać:
 
 *O(n\*log(n)+k)*
 
 ## Praktyczne testy
-Implementacje zostały też poddane praktycznym testom w celu porównania ich wydajności. Otrzymałem następujące wyniki:
+Implementacje zostały też poddane praktycznym testom w celu porównania ich wydajności.
 
 ### Tryb ciągły podawania mediany
-Tu oczywiście MagicFives wypadają fatalnie, bo chociaż mają teoretycznie tą samą złożoność asymptotyczną co wersja z posortowaną tablicą (O(n²)) to stała jest wielokrotnie większa, dodatkowo żonglerka alokacjami pamięci jest ostatecznym gwoździem do jej trumny. Kopce natomiast radzą sobie świetnie i mają najlepsze wyniki we wszystkich testach.
+Tu oczywiście MagicFives wypadają fatalnie, bo chociaż mają teoretycznie tą samą złożoność asymptotyczną co wersja z posortowaną tablicą (O(n²)) to stała jest wielokrotnie większa a dodatkowa żonglerka alokacjami pamięci jest ostatecznym gwoździem do jej trumny. Kopce natomiast radzą sobie świetnie i mają najlepsze wyniki we wszystkich testach.
 
 |n  | 1.000 | 10.000 | 100.000|
 |---| -----| ------ |------ |
@@ -79,7 +79,7 @@ Tu oczywiście MagicFives wypadają fatalnie, bo chociaż mają teoretycznie tą
 |Heap  | 0m0,008s | 0m0,059s | 0m0,339s|
 
 ### Tryb pojedynczej mediany
-Magiczne piątki odbijają sobie test ciągły i są najszybsze we wszystkich trzech testach.  Po implementacji tablicowej widać, że złożoność kwadratowa i istotnie gorsza od pozostałych dwóch algorytmów.
+Magiczne piątki odbijają sobie test ciągły i są najszybsze we wszystkich trzech testach.  Po implementacji tablicowej widać, że złożoność kwadratowa jest istotnie gorsza od pozostałych dwóch algorytmów.
 
 n  | 1.000 | 100.000| 1.000.000
 ---| -----| ------ | ---------
@@ -87,8 +87,8 @@ MagicFives | 0m0,002s | 0m0,069s | 0m0,496s
 Array | 0m0,003s | 0m0,414s | 0m41,086s
 Heap | 0m0,003s | 0m0,113s | 0m0,672s
 
-### Tryb wielokrotnej mediany (42 mediany) z dużymi wejściami
-Tak jak można się było spodziewać, implementacja kopcowa wypada tu najlepiej. Co ciekawe widać, że magiczne piątki rzeczywiście rosną liniowo dla stałej liczby zapytań o medianę a kopcowa implementacja rośnie nieco szybciej niż liniowo.
+### Tryb wielokrotnej mediany (42) z dużymi wejściami
+W tych testach nie uruchamiam już implementacji tablicowej, na którą trzeba by było zbyt długo czekać. Tak jak można się było spodziewać, implementacja kopcowa wypada tu najlepiej. Co ciekawe, widać, że magiczne piątki rzeczywiście rosną liniowo dla stałej liczby zapytań o medianę, a kopcowa implementacja rośnie nieco szybciej niż liniowo.
 
 n  | 1.000.000 | 10.000.000 | 100.000.000
 ---| -----| ------| ------
