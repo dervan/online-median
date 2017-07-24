@@ -81,6 +81,25 @@ TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
   }
 }
 
+TEST(ArrayMedianCalculatorOverflows, NegativeIntegerOverflow) {
+  ArrayMedianCalculator median_calculator;
+  const int int_min = std::numeric_limits<int>::min();
+
+  median_calculator.AddValue(int_min);
+  median_calculator.AddValue(int_min+2);
+  ASSERT_EQ(int_min+1, median_calculator.GetMedian());
+}
+
+TEST(ArrayMedianCalculatorOverflows, PositiveIntegerOverflow) {
+  ArrayMedianCalculator median_calculator;
+  const int int_max = std::numeric_limits<int>::max();
+
+  median_calculator.AddValue(int_max);
+  median_calculator.AddValue(int_max-2);
+  ASSERT_EQ(int_max-1, median_calculator.GetMedian());
+}
+
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
