@@ -71,14 +71,16 @@ Implementacje zostały też poddane praktycznym testom w celu porównania ich wy
 
 ### Tryb ciągły podawania mediany
 Tu oczywiście MagicFives wypadają fatalnie, bo chociaż mają teoretycznie tą samą złożoność asymptotyczną co wersja z posortowaną tablicą (O(n²)) to stała jest wielokrotnie większa, dodatkowo żonglerka alokacjami pamięci jest ostatecznym gwoździem do jej trumny. Kopce natomiast radzą sobie świetnie i mają najlepsze wyniki we wszystkich testach.
-n  | 1.000 | 10.000 | 100.000
----| -----| ------ |
-MagicFives | 0,051s | 0m2,425s | 3m57,328s
-Array | 0m0,008s | 0m0,063s | 0m0,604s
-Heap  | 0m0,008s | 0m0,059s | 0m0,339s
+
+|n  | 1.000 | 10.000 | 100.000|
+|---| -----| ------ |------ |
+|MagicFives | 0m0,051s | 0m2,425s | 3m57,328s |
+|Array | 0m0,008s | 0m0,063s | 0m0,604s|
+|Heap  | 0m0,008s | 0m0,059s | 0m0,339s|
 
 ### Tryb pojedynczej mediany
 Magiczne piątki odbijają sobie test ciągły i są najszybsze we wszystkich trzech testach.  Po implementacji tablicowej widać, że złożoność kwadratowa i istotnie gorsza od pozostałych dwóch algorytmów.
+
 n  | 1.000 | 100.000| 1.000.000
 ---| -----| ------ | ---------
 MagicFives | 0m0,002s | 0m0,069s | 0m0,496s
@@ -87,13 +89,15 @@ Heap | 0m0,003s | 0m0,113s | 0m0,672s
 
 ### Tryb wielokrotnej mediany (42 mediany) z dużymi wejściami
 Tak jak można się było spodziewać, implementacja kopcowa wypada tu najlepiej. Co ciekawe widać, że magiczne piątki rzeczywiście rosną liniowo dla stałej liczby zapytań o medianę a kopcowa implementacja rośnie nieco szybciej niż liniowo.
+
 n  | 1.000.000 | 10.000.000 | 100.000.000
----| -----| ------
+---| -----| ------| ------
 MagicFives | 0m1,443s | 0m12,245s | 2m14,039s
 Heap  | 0m0,734s | 0m7,224s | 1m16,121s
 
 ### Tryb pojedynczej mediany z dużymi wejściami
 Tutaj też bez zaskoczeń, magiczne piątki działają szybciej i ich czas rośnie odrobinę wolniej niż implementacji opartej na kopcach.
+
 n  | 10M | 100M| 1000M
 ---| -----| ------ | ---------
 MagicFives | 0m4,337s | 0m43,492s | 7m15,426s
