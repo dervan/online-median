@@ -1,5 +1,5 @@
 // tests.cpp
-#include "heap_median.cpp"
+#include "heap_median_calculator.cpp"
 #include <gtest/gtest.h>
 namespace {
 

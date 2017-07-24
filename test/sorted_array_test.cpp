@@ -1,19 +1,19 @@
 // tests.cpp
-#include "sorted_array.cpp"
+#include "array_median_calculator.cpp"
 #include <gtest/gtest.h>
 namespace {
 
-class SortedArrayOrder: public ::testing::Test {
+class ArrayMedianCalculatorOrder: public ::testing::Test {
   protected:
-    SortedArray array;
-    SortedArrayOrder() {
+    ArrayMedianCalculator array;
+    ArrayMedianCalculatorOrder() {
       array.AddValue(2);
       array.AddValue(8);
       array.AddValue(4);
     }
 };
 
-TEST_F(SortedArrayOrder, InsertMiddle) {
+TEST_F(ArrayMedianCalculatorOrder, InsertMiddle) {
 
   int desired_values[] = {2, 3, 4, 7, 8};
   int desired_size = 5;
@@ -29,7 +29,7 @@ TEST_F(SortedArrayOrder, InsertMiddle) {
   }
 }
 
-TEST_F(SortedArrayOrder, InsertBigger) {
+TEST_F(ArrayMedianCalculatorOrder, InsertBigger) {
 
   array.AddValue(16);
   int * values = array.GetValues();
@@ -42,7 +42,7 @@ TEST_F(SortedArrayOrder, InsertBigger) {
 }
 
 
-TEST_F(SortedArrayOrder, InsertSmaller) {
+TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
 
   array.AddValue(0);
   int * values = array.GetValues();
@@ -55,7 +55,7 @@ TEST_F(SortedArrayOrder, InsertSmaller) {
 }
 
 
-TEST_F(SortedArrayOrder, SortedBase){
+TEST_F(ArrayMedianCalculatorOrder, SortedBase){
   int * values = array.GetValues();
   int desired_values[] = {2, 4, 8};
   int desired_size = 3;
@@ -65,10 +65,10 @@ TEST_F(SortedArrayOrder, SortedBase){
   }
 }
 
-TEST(SortedArrayBasics, FirstElementAdded) {
+TEST(ArrayMedianCalculatorBasics, FirstElementAdded) {
   
   const int added_test_value = 4;
-  SortedArray array = SortedArray();
+  ArrayMedianCalculator array = ArrayMedianCalculator();
 
   array.AddValue(added_test_value);
   
@@ -77,8 +77,8 @@ TEST(SortedArrayBasics, FirstElementAdded) {
   ASSERT_EQ(added_test_value, values[0]);
 }
  
-TEST(SortedArrayBasics, ZeroSizeOnStart) {
-  SortedArray array = SortedArray();
+TEST(ArrayMedianCalculatorBasics, ZeroSizeOnStart) {
+  ArrayMedianCalculator array = ArrayMedianCalculator();
   ASSERT_EQ(0, array.GetSize());
 }
 

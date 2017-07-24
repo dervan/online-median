@@ -10,6 +10,8 @@ using std::endl;
 int main(int argc, char * argv[]) {
   std::vector<int> values;
 
+  cout.precision(20);
+  cout << std::noshowpoint;
   int new_number;
   /* Try to load an integer */
   cin >> new_number;
@@ -21,13 +23,12 @@ int main(int argc, char * argv[]) {
       cin >> input_letter;
       if (input_letter == 'm') {
         int size = values.size();
+        //std::sort(values.begin(), values.end());
         std::nth_element(values.begin(), values.begin()+(size-1)/2, values.end());
-        float median;
-        if (size % 2){
-          median = values[(size-1)/2];
-        } else {
+        double median = values[(size-1)/2];
+        if (!(size % 2)){
           std::nth_element(values.begin(), values.begin()+(size-1)/2+1, values.end());
-          median = ((long long int)values[(size-1)/2] + values[(size-1)/2 + 1])/2.0;
+          median = median/2.0 + values[(size-1)/2 + 1]/2.0;
         }
         cout << median << " ";
       } else {

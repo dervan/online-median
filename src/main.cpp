@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include "median_calculator.h"
-#include "array_median.h"
-#include "heap_median.h"
+#include "array_median_calculator.h"
+#include "heap_median_calculator.h"
 #include "magic_fives.h"
 
 using std::cin;
@@ -31,7 +31,6 @@ int main(int argc, char * argv[]) {
 
   int new_number;
   cout.precision(20);
-  //cout << std::fixed;
   cout << std::noshowpoint;
   /* Try to load an integer */
   cin >> new_number;
