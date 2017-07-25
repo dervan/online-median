@@ -8,7 +8,7 @@ ArrayMedianCalculator::ArrayMedianCalculator() {
   values = new int[max_size];
 }
 
-/* Increas size of array with values */
+/* Increas size of array with values to new_size. */
 void ArrayMedianCalculator::IncreaseSize(int new_size) {
   int * new_values = new int[new_size];
   std::memcpy(new_values, values, sizeof(int)*size);
@@ -17,17 +17,17 @@ void ArrayMedianCalculator::IncreaseSize(int new_size) {
   max_size = new_size;
 }
 
-/* Moves all values on range [postion..size-1] on next place in array.
- * Because of that it increases size of array by one - so array cannot be
- * full. But it's task of AddValue function */
+/* Moves all values on range [postion..size-1] to next place in array.
+ * It increases size of array by one - so array cannot be full when this
+ * function is called. But that check is done in AddValue function. */
 void ArrayMedianCalculator::ShiftUp(int position) {
   int copy_length = size-position;
   std::memmove(&values[position+1], &values[position], sizeof(int)*copy_length);
   size++;
 }
 
-/* Finds the first value that is bigger than given as argument
- * It uses binseach (ShiftUp is linear anyway, but it's always some speedup) */
+/* Finds the first value that is bigger than given as argument.
+ * It uses binsearch (ShiftUp is linear anyway, but it's always some speedup) */
 int ArrayMedianCalculator::LowerBound(int value) const {
   if (size == 0) {
     return 0;
@@ -50,7 +50,7 @@ int ArrayMedianCalculator::LowerBound(int value) const {
   return left;
 }
 
-/* Adds value to sorted array. Increases size of values if needed */
+/* Adds value to sorted array. Also increases size of values array if needed */
 void ArrayMedianCalculator::AddValue(int value) {
   if (size==max_size) {
     IncreaseSize(2*max_size);
@@ -68,7 +68,7 @@ int * ArrayMedianCalculator::GetValues() const {
 }
 
 /* Returns correct, mathematical median of array. It have to be
- * double because average of two ints may have fraction part. */
+ * double because average of two integers may have fraction part. */
 double ArrayMedianCalculator::GetMedian(void) {
   if (size % 2 == 0) {
     /* Cast to double to prevent integer overflow */
