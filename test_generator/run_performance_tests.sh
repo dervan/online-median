@@ -12,8 +12,6 @@ for size in 1000 10000 100000; do
   done;
 done;
 
-exit 1;
-
 echo "###########################################################"
 echo "Single median tests: (1k, 100k, 1M) "
 for size in 1000 100000 1000000; do
