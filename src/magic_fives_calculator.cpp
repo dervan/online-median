@@ -9,11 +9,15 @@ MagicFivesCalculator::MagicFivesCalculator(){
   values = new int[max_size];
 }
 
+MagicFivesCalculator::~MagicFivesCalculator(){
+  delete[] values;
+}
+
 /* Increases size of arrays with values */
 void MagicFivesCalculator::IncreaseSize(int new_size) {
   int * new_values = new int[new_size];
   std::memcpy(new_values, values, sizeof(int)*size);
-  delete values;
+  delete[] values;
   values = new_values;
   max_size = new_size;
 }

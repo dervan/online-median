@@ -10,6 +10,13 @@ Heap<Comparator>::Heap() {
   values = new int[max_size];
 }
 
+/* Deletes heap and frees it's memory */
+template <typename Comparator>
+Heap<Comparator>::~Heap() {
+  delete[] values;
+}
+
+
 /* Increases size of array with values */
 template <typename Comparator>
 void Heap<Comparator>::IncreaseSize(int new_size) {

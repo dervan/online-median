@@ -14,6 +14,7 @@ class MagicFivesCalculator : public MedianCalculator {
     void IncreaseSize(int new_size);
   public:
     MagicFivesCalculator();
+    ~MagicFivesCalculator();
     void AddValue(int value);
     double GetMedian();
 };

@@ -69,5 +69,6 @@ int main(int argc, char * argv[]) {
     }
   }
   cout << endl;
+  delete median_calculator;
   return 0;
 }

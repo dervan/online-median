@@ -13,6 +13,8 @@ class HeapMedianCalculator : public MedianCalculator {
     bool UpperIsBigger() const;
     void Equalize();
   public:
+    HeapMedianCalculator() {};
+    ~HeapMedianCalculator() {};
     double GetMedian();
     void AddValue(int);
 };

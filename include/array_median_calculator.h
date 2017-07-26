@@ -5,7 +5,6 @@
 class ArrayMedianCalculator : public MedianCalculator {
   protected:
     int * values;
-    int * copy_buffer;
     int size;
     int max_size;
     int LowerBound(int value) const;
@@ -13,6 +12,7 @@ class ArrayMedianCalculator : public MedianCalculator {
     void IncreaseSize(int new_size);
   public:
     ArrayMedianCalculator();
+    ~ArrayMedianCalculator();
     int * GetValues() const;
     int GetSize() const {return size;};
     void AddValue(int value);

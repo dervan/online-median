@@ -8,11 +8,15 @@ ArrayMedianCalculator::ArrayMedianCalculator() {
   values = new int[max_size];
 }
 
+ArrayMedianCalculator::~ArrayMedianCalculator() {
+  delete[] values;
+}
+
 /* Increas size of array with values to new_size. */
 void ArrayMedianCalculator::IncreaseSize(int new_size) {
   int * new_values = new int[new_size];
   std::memcpy(new_values, values, sizeof(int)*size);
-  delete values;
+  delete[] values;
   values = new_values;
   max_size = new_size;
 }
