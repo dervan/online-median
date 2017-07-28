@@ -25,6 +25,7 @@ TEST_F(ArrayMedianCalculatorOrder, SortedBase){
   for(int i=0; i<desired_size; i++){
     ASSERT_EQ(desired_values[i], values[i]);
   }
+  delete[] values;
 }
 
 TEST(ArrayMedianCalculatorBasics, FirstElementAdded) {
@@ -37,6 +38,7 @@ TEST(ArrayMedianCalculatorBasics, FirstElementAdded) {
   int * values = test_array_calculator.GetValues();
   ASSERT_EQ(1, test_array_calculator.GetSize());
   ASSERT_EQ(added_test_value, values[0]);
+  delete[] values;
 }
 
 TEST_F(ArrayMedianCalculatorOrder, InsertMiddle) {
@@ -52,6 +54,7 @@ TEST_F(ArrayMedianCalculatorOrder, InsertMiddle) {
   for(int i=0; i<desired_size; i++){
     ASSERT_EQ(desired_values[i], values[i]);
   }
+  delete[] values;
 }
 
 TEST_F(ArrayMedianCalculatorOrder, InsertBigger) {
@@ -65,6 +68,7 @@ TEST_F(ArrayMedianCalculatorOrder, InsertBigger) {
   for(int i=0; i<desired_size; i++){
     ASSERT_EQ(desired_values[i], values[i]);
   }
+  delete[] values;
 }
 
 TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
@@ -78,6 +82,7 @@ TEST_F(ArrayMedianCalculatorOrder, InsertSmaller) {
   for(int i=0; i<desired_size; i++){
     ASSERT_EQ(desired_values[i], values[i]);
   }
+  delete[] values;
 }
 
 
@@ -102,8 +107,6 @@ TEST(ArrayMedianCalculatorBasics, AverageOfSameElements) {
   }
   ASSERT_EQ(desired_median, median_calculator.GetMedian());
 }
-
-
 
 TEST(ArrayMedianCalculatorOverflows, NegativeIntegerOverflow) {
   ArrayMedianCalculator median_calculator;
