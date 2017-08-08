@@ -37,19 +37,19 @@ include_directories("../src")
 
 add_custom_target(check COMMAND GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} --verbose)
 
-add_executable(array_median_calculator_test array_median_calculator_test.cpp)
+add_executable(array_median_calculator_test array_median_calculator_test.cpp ../src/vector.cpp)
 target_link_libraries(array_median_calculator_test gtest_main)
 add_test(NAME SortedArrayTests COMMAND array_median_calculator_test)
 
-add_executable(heap_median_calculator_test heap_median_calculator_test.cpp ../src/heap.cpp)
+add_executable(heap_median_calculator_test heap_median_calculator_test.cpp ../src/heap.cpp ../src/vector.cpp)
 target_link_libraries(heap_median_calculator_test gtest_main)
 add_test(NAME HeapMedianTests COMMAND heap_median_calculator_test)
 
-add_executable(heap_test heap_test.cpp)
+add_executable(heap_test heap_test.cpp ../src/vector.cpp)
 target_link_libraries(heap_test gtest_main)
 add_test(NAME HeapTests COMMAND heap_test)
 
-add_executable(magic_fives_calculator_test magic_fives_calculator_test.cpp)
+add_executable(magic_fives_calculator_test magic_fives_calculator_test.cpp ../src/vector.cpp)
 target_link_libraries(magic_fives_calculator_test gtest_main)
 add_test(NAME MagicFivesTests COMMAND magic_fives_calculator_test)
 

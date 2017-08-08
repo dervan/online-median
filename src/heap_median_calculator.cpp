@@ -1,5 +1,6 @@
-#include <iostream>
 #include "heap_median_calculator.h"
+
+#include <iostream>
 
 bool HeapMedianCalculator::LowerIsBigger() const {
   return upper_heap.GetSize() < lower_heap.GetSize();
