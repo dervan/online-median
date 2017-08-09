@@ -8,9 +8,12 @@ Vector::Vector() {
 }
 
 Vector::Vector(int start_size) {
+  std::cout<<"CREATEEE\n";
   max_size = start_size;
   size = 0;
   values = new int[max_size];
+
+  std::cout<<"size: " << size << "\n";
 }
 
 Vector::~Vector() {

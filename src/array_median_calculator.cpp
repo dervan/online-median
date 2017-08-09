@@ -3,22 +3,11 @@
 #include "array_median_calculator.h"
 
 ArrayMedianCalculator::ArrayMedianCalculator() {
-  size = 0;
-  max_size = 1024;
-  values = new int[max_size];
+  std::cout<<"llllCREATEEE\n";
+  std::cout<<"size: " << size << "\n";
 }
 
 ArrayMedianCalculator::~ArrayMedianCalculator() {
-  delete[] values;
-}
-
-/* Increas size of array with values to new_size. */
-void ArrayMedianCalculator::IncreaseSize(int new_size) {
-  int * new_values = new int[new_size];
-  std::memcpy(new_values, values, sizeof(int)*size);
-  delete[] values;
-  values = new_values;
-  max_size = new_size;
 }
 
 /* Moves all values on range [postion..size-1] to next place in array.
@@ -56,8 +45,9 @@ int ArrayMedianCalculator::LowerBound(int value) const {
 
 /* Adds value to sorted array. Also increases size of values array if needed */
 void ArrayMedianCalculator::AddValue(int value) {
+  std::cout << "INsert " << value << std::endl;
   if (size==max_size) {
-    IncreaseSize(2*max_size);
+    ExpandSize(2*max_size);
   }
   int proper_position = LowerBound(value);
   ShiftUp(proper_position);

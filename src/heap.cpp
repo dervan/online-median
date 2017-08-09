@@ -10,6 +10,15 @@ Heap<Comparator>::Heap() {
   values = new int[max_size];
 }
 
+/* Creates new heap as copy of other heap */
+template <typename Comparator>
+Heap<Comparator>::Heap(const Heap<Comparator> &base_heap) {
+  size = base_heap.size;
+  max_size = base_heap.max_size;
+  values = new int[max_size];
+  std::memcpy(values, base_heap.values, size);
+}
+
 /* Deletes heap and frees it's memory */
 template <typename Comparator>
 Heap<Comparator>::~Heap() {

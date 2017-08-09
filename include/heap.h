@@ -16,6 +16,7 @@ class Heap{
     void Swap(int a, int b);
   public:
     Heap();
+    Heap(const Heap<Comparator> &base_heap);
     ~Heap();
     int GetTop() const {return values[0];};
     int GetSize() const {return size;};

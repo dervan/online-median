@@ -37,7 +37,7 @@ include_directories("../src")
 
 add_custom_target(check COMMAND GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} --verbose)
 
-add_executable(array_median_calculator_test array_median_calculator_test.cpp)
+add_executable(array_median_calculator_test array_median_calculator_test.cpp ../src/vector.cpp)
 target_link_libraries(array_median_calculator_test gtest_main)
 add_test(NAME SortedArrayTests COMMAND array_median_calculator_test)
 

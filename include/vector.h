@@ -12,4 +12,8 @@ class Vector {
     int operator [](int i) const {return values[i];}
     int & operator [](int i) {return values[i];}
     void AddValue(int new_value);
+    int GetSize() const {
+      
+  std::cout<<"size: " << size << "\n";
+      return size;}
 };
