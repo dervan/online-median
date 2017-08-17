@@ -32,7 +32,6 @@ int main(int argc, char * argv[]) {
   } else {
     median_calculator = new HeapMedianCalculator();
   }
-
   /* Configure cout to get pretty output */
   cout.precision(20);
   cout << std::noshowpoint;

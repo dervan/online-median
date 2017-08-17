@@ -3,12 +3,6 @@
 #include <cstring>
 #include <iostream>
 
-ArrayMedianCalculator::ArrayMedianCalculator() {
-}
-
-ArrayMedianCalculator::~ArrayMedianCalculator() {
-}
-
 /* Moves all values on range [postion..size-1] to next place in array.
  * It increases size of array by one - so array cannot be full when this
  * function is called. But that check is done in AddValue function. */

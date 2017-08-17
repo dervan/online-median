@@ -9,8 +9,10 @@ class ArrayMedianCalculator : public MedianCalculator, public Vector {
     int LowerBound(int value) const;
     void ShiftUp(int position);
   public:
-    ArrayMedianCalculator();
-    ~ArrayMedianCalculator();
+    /* Default constructor and destructor tasks are done in Vector class */
+    ArrayMedianCalculator() {};
+    ArrayMedianCalculator(const ArrayMedianCalculator &base) : Vector(base) {};
+    ~ArrayMedianCalculator() {};
     int * GetValues() const;
     void AddValue(int value);
     double GetMedian();

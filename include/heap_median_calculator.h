@@ -15,6 +15,7 @@ class HeapMedianCalculator : public MedianCalculator {
     void Equalize();
   public:
     HeapMedianCalculator() {};
+    HeapMedianCalculator(const HeapMedianCalculator &base);
     ~HeapMedianCalculator() {};
     double GetMedian();
     void AddValue(int);

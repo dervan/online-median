@@ -4,12 +4,6 @@
 #include <iostream>
 #include <limits>
 
-MagicFivesCalculator::MagicFivesCalculator(){
-}
-
-MagicFivesCalculator::~MagicFivesCalculator(){
-}
-
 /* Does the partition of given array based on pivot values. Returns 
  * array of values where values [0..pivotPosition-1] are smaller than pivot
  * and [pivotPosition..size-1] are bigger or equal (pivot values are always

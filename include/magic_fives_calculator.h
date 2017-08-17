@@ -11,8 +11,10 @@ class MagicFivesCalculator : public Vector, public MedianCalculator {
     int * Partition(int * input_values, int size, int pivot, int * pivotPosition) const;
     int FindUpperMedian(int lower_median) const;
   public:
-    MagicFivesCalculator();
-    ~MagicFivesCalculator();
+    /* Default constructor and destructor tasks are done in Vector class */
+    MagicFivesCalculator() {};
+    MagicFivesCalculator(const MagicFivesCalculator &base) : Vector(base) {};
+    ~MagicFivesCalculator() {};
     void AddValue(int new_value) { Vector::AddValue(new_value); }
     double GetMedian();
 };

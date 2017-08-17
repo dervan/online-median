@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+HeapMedianCalculator::HeapMedianCalculator(const HeapMedianCalculator &base) {
+  upper_heap = Heap<std::less<int> >(base.upper_heap);
+  lower_heap = Heap<std::greater<int> >(base.lower_heap);
+}
+
 bool HeapMedianCalculator::LowerIsBigger() const {
   return upper_heap.GetSize() < lower_heap.GetSize();
 }

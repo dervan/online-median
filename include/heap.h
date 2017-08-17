@@ -13,8 +13,9 @@ class Heap: public Vector {
     void FixDown(int i);
     void Swap(int a, int b);
   public:
-    /* Constructor and destructor tasks are done in Vector class */
+    /* Default constructor and destructor tasks are done in Vector class */
     Heap() {};
+    Heap(const Heap &base) : Vector(base) {};
     ~Heap() {};
     int GetTop() const {return values[0];};
     int GetSize() const {return size;};
