@@ -3,8 +3,6 @@
 #include "array_median_calculator.h"
 
 ArrayMedianCalculator::ArrayMedianCalculator() {
-  std::cout<<"llllCREATEEE\n";
-  std::cout<<"size: " << size << "\n";
 }
 
 ArrayMedianCalculator::~ArrayMedianCalculator() {
@@ -45,7 +43,6 @@ int ArrayMedianCalculator::LowerBound(int value) const {
 
 /* Adds value to sorted array. Also increases size of values array if needed */
 void ArrayMedianCalculator::AddValue(int value) {
-  std::cout << "INsert " << value << std::endl;
   if (size==max_size) {
     ExpandSize(2*max_size);
   }
