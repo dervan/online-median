@@ -16,6 +16,7 @@ Vector::~Vector() {
 Vector::Vector(const Vector &base_vector) {
   max_size = base_vector.max_size;
   size = base_vector.size;
+  values = new int[max_size];
   std::memcpy(values, base_vector.values, size);
 }
 

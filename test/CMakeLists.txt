@@ -41,11 +41,11 @@ add_executable(array_median_calculator_test array_median_calculator_test.cpp ../
 target_link_libraries(array_median_calculator_test gtest_main)
 add_test(NAME SortedArrayTests COMMAND array_median_calculator_test)
 
-add_executable(heap_median_calculator_test heap_median_calculator_test.cpp ../src/heap.cpp)
+add_executable(heap_median_calculator_test heap_median_calculator_test.cpp ../src/heap.cpp ../src/vector.cpp)
 target_link_libraries(heap_median_calculator_test gtest_main)
 add_test(NAME HeapMedianTests COMMAND heap_median_calculator_test)
 
-add_executable(heap_test heap_test.cpp)
+add_executable(heap_test heap_test.cpp ../src/vector.cpp)
 target_link_libraries(heap_test gtest_main)
 add_test(NAME HeapTests COMMAND heap_test)
 

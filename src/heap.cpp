@@ -3,49 +3,11 @@
 #include <cstring>
 #include <functional>
 
-/* Creates new heap ordered with function given as template parameter */
-template <typename Comparator>
-Heap<Comparator>::Heap() {
-  size = 0;
-  max_size = 1024;
-  values = new int[max_size];
-}
-
-/* Creates new heap as copy of other heap */
-template <typename Comparator>
-Heap<Comparator>::Heap(const Heap<Comparator> &base_heap) {
-  size = base_heap.size;
-  max_size = base_heap.max_size;
-  values = new int[max_size];
-  std::memcpy(values, base_heap.values, size);
-}
-
-/* Deletes heap and frees it's memory */
-template <typename Comparator>
-Heap<Comparator>::~Heap() {
-  delete[] values;
-}
-
-
-/* Increases size of array with values */
-template <typename Comparator>
-void Heap<Comparator>::IncreaseSize(int new_size) {
-  int * new_values = new int[new_size];
-  std::memcpy(new_values, values, sizeof(int)*size);
-  delete[] values;
-  values = new_values;
-  max_size = new_size;
-}
-
 /* Adds new value to heap */
 template <typename Comparator>
-void Heap<Comparator>::AddValue(int value){
-  if(size==max_size){
-    IncreaseSize(2*max_size);
-  }
-  values[size] = value;
-  FixUp(size);
-  size++;
+void Heap<Comparator>::AddValue(int new_value){
+  Vector::AddValue(new_value);
+  FixUp(size-1);
 }
 
 /* Deletes value on top of heap and restores heap properties */
