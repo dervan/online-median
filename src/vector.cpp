@@ -1,6 +1,5 @@
 #include <cstring>
 #include <iostream>
-#include <stdexcept>
 #include "vector.h"
 
 Vector::Vector(int start_size) {
@@ -35,9 +34,9 @@ void Vector::ExpandSize(int new_size){
 
 /* Adds new value on end of actual vector and resizes it if needed */
 void Vector::AddValue(int new_value) {
-  values[size] = new_value;
-  size++;
   if (size==max_size) {
     ExpandSize(2*max_size);
   }
+  values[size] = new_value;
+  size++;
 }

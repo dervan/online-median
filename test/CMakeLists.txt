@@ -49,7 +49,7 @@ add_executable(heap_test heap_test.cpp)
 target_link_libraries(heap_test gtest_main)
 add_test(NAME HeapTests COMMAND heap_test)
 
-add_executable(magic_fives_calculator_test magic_fives_calculator_test.cpp)
+add_executable(magic_fives_calculator_test magic_fives_calculator_test.cpp ../src/vector.cpp)
 target_link_libraries(magic_fives_calculator_test gtest_main)
 add_test(NAME MagicFivesTests COMMAND magic_fives_calculator_test)
 

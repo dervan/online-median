@@ -1,25 +1,12 @@
-#include "magic_fives_calculator.h"
 #include <cstring>
-#include "iostream"
-#include "limits"
+#include <iostream>
+#include <limits>
+#include "magic_fives_calculator.h"
 
 MagicFivesCalculator::MagicFivesCalculator(){
-  size = 0;
-  max_size = 1024;
-  values = new int[max_size];
 }
 
 MagicFivesCalculator::~MagicFivesCalculator(){
-  delete[] values;
-}
-
-/* Increases size of arrays with values */
-void MagicFivesCalculator::IncreaseSize(int new_size) {
-  int * new_values = new int[new_size];
-  std::memcpy(new_values, values, sizeof(int)*size);
-  delete[] values;
-  values = new_values;
-  max_size = new_size;
 }
 
 /* Does the partition of given array based on pivot values. Returns 
@@ -27,7 +14,7 @@ void MagicFivesCalculator::IncreaseSize(int new_size) {
  * and [pivotPosition..size-1] are bigger or equal (pivot values are always
  * on beginning of second part of array ) 
  * This function returns allocated array, you have to remember to free it later */
-int * MagicFivesCalculator::Partition(int * input_values, int size, int pivot, int * pivotPosition){
+int * MagicFivesCalculator::Partition(int * input_values, int size, int pivot, int * pivotPosition) const {
   int * parted = new int[size];
   int left = 0;
   int right = size-1;
@@ -54,7 +41,7 @@ int * MagicFivesCalculator::Partition(int * input_values, int size, int pivot, i
 }
 
 /* Calculates median of short array via ordinary insert sort */
-int MagicFivesCalculator::SimpleMedian(int * input_values, int count) {
+int MagicFivesCalculator::SimpleMedian(int * input_values, int count) const {
   for(int i = 1; i<count; i++){
     int j = i;
     while (j>0 && input_values[j-1]>input_values[j]) {
@@ -69,7 +56,8 @@ int MagicFivesCalculator::SimpleMedian(int * input_values, int count) {
 
 /* This is essence of MagicFives algorithm. It selects position-th biggest value
  * from input_values array. It runs in pesimistic linear time. */
-int MagicFivesCalculator::Select(int * const input_values, int count, int position){
+int MagicFivesCalculator::Select(int * const input_values,
+                                 int count, int position) const {
 
   /* Firstly divide array into constant size buckets */
   int groups = count/5;
@@ -117,7 +105,7 @@ int MagicFivesCalculator::Select(int * const input_values, int count, int positi
 /* Select algorithm finds lower median. If array have even length
  * we have to find also upper median - next bigger value or same
  * value - depends on positions of lower_median occurences */
-int MagicFivesCalculator::FindUpperMedian(int lower_median) {
+int MagicFivesCalculator::FindUpperMedian(int lower_median) const {
   int upper_median_guess = std::numeric_limits<int>::max();
   int smaller_or_equal = 0;
   for (int i = 0; i < size; i++) {
@@ -135,7 +123,7 @@ int MagicFivesCalculator::FindUpperMedian(int lower_median) {
 }
 
 /* It just simply selects median with Select algorithm */
-double MagicFivesCalculator::GetMedian(){
+double MagicFivesCalculator::GetMedian() {
   int lower_median = Select(values, size, (size-1)/2);
   if (!(size % 2)) {
     int upper_median = FindUpperMedian(lower_median);
@@ -143,13 +131,4 @@ double MagicFivesCalculator::GetMedian(){
   } else {
     return lower_median;
   }
-}
-
-/* Adds new value to array and increase it's size if it's needed */
-void MagicFivesCalculator::AddValue(int new_value) {
-  if (size==max_size) {
-    IncreaseSize(2*max_size);
-  }
-  values[size] = new_value;
-  size++;
 }
