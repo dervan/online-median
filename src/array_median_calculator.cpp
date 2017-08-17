@@ -1,6 +1,7 @@
-#include <iostream>
-#include <cstring>
 #include "array_median_calculator.h"
+
+#include <cstring>
+#include <iostream>
 
 ArrayMedianCalculator::ArrayMedianCalculator() {
 }

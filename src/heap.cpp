@@ -1,6 +1,7 @@
 #include "heap.h"
-#include "cstring"
-#include "functional"
+
+#include <cstring>
+#include <functional>
 
 /* Creates new heap ordered with function given as template parameter */
 template <typename Comparator>

@@ -3,7 +3,8 @@
 
 #include "median_calculator.h"
 #include "heap.h"
-#include "functional"
+
+#include <functional>
 
 class HeapMedianCalculator : public MedianCalculator {
   private:

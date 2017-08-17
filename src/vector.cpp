@@ -1,6 +1,7 @@
+#include "vector.h"
+
 #include <cstring>
 #include <iostream>
-#include "vector.h"
 
 Vector::Vector(int start_size) {
   max_size = start_size;

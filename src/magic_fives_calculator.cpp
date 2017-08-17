@@ -1,7 +1,8 @@
+#include "magic_fives_calculator.h"
+
 #include <cstring>
 #include <iostream>
 #include <limits>
-#include "magic_fives_calculator.h"
 
 MagicFivesCalculator::MagicFivesCalculator(){
 }

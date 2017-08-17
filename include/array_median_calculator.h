@@ -1,5 +1,6 @@
 #ifndef ARRAY_MEDIAN_CALCULATOR_H 
 #define ARRAY_MEDIAN_CALCULATOR_H
+
 #include "median_calculator.h"
 #include "vector.h"
 
